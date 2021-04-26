@@ -45,9 +45,11 @@ router.get("/fooditems", middleware.logGetRequest, function (req, res) {
     FoodCatalogue.find(query)
         .sort({updatedAt : sort})
         .then(foodItems => {
+            let totalCount = foodItems.length ;
             foodItems = foodItems.slice(skip,limit * page) ;
             return res.json({
-                foodItems: foodItems
+                foodItems: foodItems,
+                total_count : total_count
             })
         })
         .catch(err => {
