@@ -19,7 +19,7 @@ middlewareObj.logGetRequest = function(req,res,next){
     let query = req.query ;
     let queryParams = [] ;
     for(let prop in query){
-        queryParmas.push(prop) ;
+        queryParams.push(prop) ;
     }
     let log = `[${formatted_date}] query parameters${queryParams}`;
     fs.appendFile("searchApiLogs.txt", log + "\n", err => {
