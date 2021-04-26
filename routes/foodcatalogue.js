@@ -49,7 +49,7 @@ router.get("/fooditems", middleware.logGetRequest, function (req, res) {
             foodItems = foodItems.slice(skip,limit * page) ;
             return res.json({
                 foodItems: foodItems,
-                total_count : total_count
+                totalCount : totalCount
             })
         })
         .catch(err => {

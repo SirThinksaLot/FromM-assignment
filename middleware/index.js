@@ -16,12 +16,14 @@ middlewareObj.logGetRequest = function(req,res,next){
         current_datetime.getMinutes() +
         ":" +
         current_datetime.getSeconds();
-    let query = req.query ;
+    
     let queryParams = [] ;
-    for(let prop in query){
+    for(let prop in req.query){
         queryParams.push(prop) ;
+        queryParams.push(req.query[prop]) ;
+        console.log(req.query[prop]) ;
     }
-    let log = `[${formatted_date}] query parameters${queryParams}`;
+    let log = `[${formatted_date}] query parameters ${queryParams}`;
     fs.appendFile("searchApiLogs.txt", log + "\n", err => {
         if (err) {
             console.log(err);
